@@ -90,7 +90,7 @@ export default function PolicyTable({
                   onClick={prevPage}
                   variant="ghost"
                   size="sm"
-                  disabled={offset === 0} // Disable when on the first page
+                  disabled={offset === 0} 
                 >
                   <ChevronLeft className="mr-2 h-4 w-4" />
                   Prev
@@ -100,7 +100,7 @@ export default function PolicyTable({
                   onClick={nextPage}
                   variant="ghost"
                   size="sm"
-                  disabled={offset + postsPerPage >= totalPolicies} // Disable when no more posts
+                  disabled={offset + postsPerPage >= totalPolicies} 
                 >
                   Next
                   <ChevronRight className="ml-2 h-4 w-4" />

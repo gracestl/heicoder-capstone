@@ -28,7 +28,7 @@ export default function CreatePolicyHolderForm({ policies }:any) {
     ) as string;
     const selectedPolicies = formData.getAll("policies") as string[];
 
-    // Create the PolicyHolder and relate it to the selected policies
+  
     await db.policyHolder.create({
       data: {
         policy_holder_id,
@@ -38,14 +38,14 @@ export default function CreatePolicyHolderForm({ policies }:any) {
         policies: {
           create: selectedPolicies.map((policyId) => ({
             insurance_policy: {
-              connect: { insurance_policy_id: policyId }, // Relating to existing policies
+              connect: { insurance_policy_id: policyId }, 
             },
           })),
         },
       },
     });
 
-    redirect("/"); // Redirect after successful creation
+    redirect("/");
   }
 
   return (
@@ -56,7 +56,6 @@ export default function CreatePolicyHolderForm({ policies }:any) {
           <CardDescription>Add a new policy holder</CardDescription>
         </CardHeader>
         <CardContent>
-          {/* NRIC Field */}
           <div className="mt-5 mb-10 mr-[32px] flex items-center">
             <Label
               htmlFor="policy_holder_id"
@@ -73,8 +72,6 @@ export default function CreatePolicyHolderForm({ policies }:any) {
               className="w-[320px]"
             />
           </div>
-
-          {/* Email Field */}
           <div className="mb-10 mr-[32px] flex items-center">
             <Label
               htmlFor="policy_holder_email"
@@ -92,7 +89,6 @@ export default function CreatePolicyHolderForm({ policies }:any) {
             />
           </div>
 
-          {/* First Name Field */}
           <div className="mb-10 mr-[32px] flex items-center">
             <Label
               htmlFor="policy_holder_first_name"
@@ -110,7 +106,6 @@ export default function CreatePolicyHolderForm({ policies }:any) {
             />
           </div>
 
-          {/* Last Name Field */}
           <div className="mb-10 mr-[32px] flex items-center">
             <Label
               htmlFor="policy_holder_last_name"
@@ -128,7 +123,6 @@ export default function CreatePolicyHolderForm({ policies }:any) {
             />
           </div>
 
-          {/* Policies (Multi-select) */}
           <div className="mb-20 mr-[32px] flex items-center">
             <Label htmlFor="policies" className="w-[310px] text-left text-lg">
               Policies
@@ -136,7 +130,6 @@ export default function CreatePolicyHolderForm({ policies }:any) {
             <SelectPolicyName policies={policies} />
           </div>
 
-          {/* Submit Button */}
           <div className="flex justify-end mr-[32px] mb-6">
             <Button type="submit">Submit</Button>
           </div>

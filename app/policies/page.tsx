@@ -5,12 +5,11 @@ import AvatarMenu from "@/components/avatarmenu";
 import Link from "next/link";
 import { db } from "@/db";
 
-// Function to fetch policies from the database
+
 export async function fetchPolicies(offset: number) {
-  // Fetching policies from the database; adding a limit or offset if necessary
   const policies = await db.insurancePolicy.findMany({
     skip: offset,
-    take: 5, // or the number of policies you want to fetch at a time
+    take: 5,
   });
 
 
@@ -18,16 +17,14 @@ export async function fetchPolicies(offset: number) {
 
 
   return {
-    policies,       // Return policies directly
-    totalPolicies// Update the offset by the number of records fetched
+    policies,       
+    totalPolicies
   };
 }
 
 export default async function Policy({ searchParams }: any) {
-  // Get the offset from searchParams or default to 0
   const offset = Number(searchParams?.offset ?? 0);
 
-  // Fetch policies based on the offset
   const { policies, totalPolicies } = await fetchPolicies(offset);
 
   return (

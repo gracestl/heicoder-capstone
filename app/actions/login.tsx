@@ -1,5 +1,4 @@
 "use server";
-import { PrismaClient } from "@prisma/client";
 import { signIn } from "@/lib/auth";
 import { isRedirectError } from "next/dist/client/components/redirect";
 
